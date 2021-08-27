@@ -1,0 +1,81 @@
+{
+  "name": "rest",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "babel src -d dist",
+    "start": "npm run build && node dist/server/index.js",
+    "start-dev": "nodemon src/server --exec babel-node",
+    "docker:build": "docker-compose up --build",
+    "docker:up": "docker-compose up",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "lint": "eslint src/ --fix",
+    "test": "NODE_ENV=test jest --runInBand --verbose --passWithNoTests",
+    "coverage": "NODE_ENV=test jest --runInBand --verbose --collect-coverage --passWithNoTests",
+    "create-db": "sequelize-cli db:create",
+    "drop-db": "sequelize-cli db:drop",
+    "apply-migrations": "sequelize-cli db:migrate",
+    "revert-migrations": "sequelize-cli db:migrate:undo:all",
+    "apply-seeders": "sequelize-cli db:seed:all",
+    "revert-seeders": "sequelize-cli db:seed:undo:all"
+  },
+  "dependencies": {
+    "@admin-bro/express": "^3.1.0",
+    "@admin-bro/sequelize": "^1.2.1",
+    "admin-bro": "^4.0.0",
+    "cookie-parser": "~1.4.4",
+    "dayjs": "^1.10.4",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-formidable": "^1.2.0",
+    "express-session": "^1.17.1",
+    "express-validation": "^3.0.6",
+    "http-errors": "~1.6.3",
+    "http-status": "^1.5.0",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "sqlite3": "^5.0.1",
+    "sequelize": "^6.3.5",
+    "swagger-ui-express": "^4.1.6",
+    "tslib": "^2.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.13",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "debug": "^4.3.1",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-import-resolver-babel-module": "^5.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-security": "^1.4.0",
+    "prettier": "^2.2.1",
+    "nodemon": "^2.0.7",
+    "faker": "^5.1.0",
+    "supertest": "^6.1.1",
+    "jest": "^26.6.3",
+    "sequelize-cli": "^6.2.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**",
+      "!**/tests/**",
+      "!**/utils/**",
+      "!**/**test**",
+      "!**/middlewares/**"
+    ],
+    "testPathIgnorePatterns": [
+      "/.imagine/",
+      "<rootDir>/dist/"
+    ]
+  }
+}
