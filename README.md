@@ -1,6 +1,6 @@
 # book_hero app
 
-Book RESTful API, used as an example to illustrate API concepts
+Bootstrapped Book RESTful API, used as an example to illustrate API concepts
 
 ### Run the app in terminal
 
